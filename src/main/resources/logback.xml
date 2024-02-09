@@ -1,0 +1,16 @@
+<configuration>
+
+    <!-- Console Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set Root Level to OFF or INFO or DEBUG or ERROR or WARN -->
+    <!-- It can be overridden via system variable "LOG_LEVEL" -->
+    <root level="${LOG_LEVEL:-DEBUG}">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>
