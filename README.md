@@ -1,5 +1,13 @@
 ### API and WEB UI Test Automation Framework
 
+[![stars - test-automation-java-restassured-selenide](https://img.shields.io/github/stars/avighub/test-automation-java-restassured-selenide?style=social)](https://github.com/avighub/test-automation-java-restassured-selenide)
+[![forks - test-automation-java-restassured-selenide](https://img.shields.io/github/forks/avighub/test-automation-java-restassured-selenide?style=social)](https://github.com/avighub/test-automation-java-restassured-selenide)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - test-automation-java-restassured-selenide](https://img.shields.io/github/issues/avighub/test-automation-java-restassured-selenide)](https://github.com/avighub/test-automation-java-restassured-selenide/issues)
+<br>[![pages-build-deployment](https://github.com/avighub/api-web-test-automation-java/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/avighub/api-web-test-automation-java/actions/workflows/pages/pages-build-deployment)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/avighub/test-automation-java-restassured-selenide/run-tests-on-pr-or-push.yml)
+<br>[![View site - GH Pages](https://img.shields.io/badge/View_site-GH_Pages-2ea44f?style=for-the-badge)](https://avighub.github.io/test-automation-java-restassured-selenide/)
+
 - This framework is built for the purpose of automating API services and WEB applications.
 - This can also be used as a base framework to automate any application that has API and WEB interfaces.
 - However the main intention of this framework is not just to create yet another framework on GitHub,<br> but to solve
