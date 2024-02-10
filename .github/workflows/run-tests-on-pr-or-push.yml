@@ -17,7 +17,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: ubuntu
 
     steps:
       - name: Checkout app repository
@@ -41,7 +40,9 @@ jobs:
         run: nohup yarn dev >/dev/null 2>&1 &
 
       - name: Test api
-        run: curl --location 'http://localhost:3001/users'
+        uses: sozo-design/curl@v1.0.2
+        with:
+          args: http://localhost:3001/users
 
       - name: Move to previous dir
         run: cd ..
