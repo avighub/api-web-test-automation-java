@@ -39,6 +39,9 @@ jobs:
       - name: start app
         run: nohup yarn dev >/dev/null 2>&1 &
 
+      - name: Wait for app to start
+        run: sleep 30
+
       - name: Test api
         uses: sozo-design/curl@v1.0.2
         with:
