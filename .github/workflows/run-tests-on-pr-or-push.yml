@@ -38,8 +38,7 @@ jobs:
         run: yarn
 
       - name: start app
-        #        run: nohup yarn dev >/dev/null 2>&1 &
-        run: yarn dev
+        run: nohup yarn dev >/dev/null 2>&1 &
 
       - name: Test api
         run: curl --location 'http://localhost:3001/users'
