@@ -39,7 +39,7 @@ jobs:
         run: yarn
 
       - name: start app
-        run: yarn dev
+        run: nohup yarn dev >/dev/null 2>&1 &
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
