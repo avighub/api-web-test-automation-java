@@ -38,11 +38,12 @@ jobs:
         run: yarn
 
       - name: start app
-        run: nohup yarn dev >/dev/null 2>&1 &
+        #        run: nohup yarn dev >/dev/null 2>&1 &
+        run: yarn dev
 
       - name: Move to previous dir
         run: cd ..
-        
+
       - name: Checkout automation framework repository
         uses: actions/checkout@v3
 
