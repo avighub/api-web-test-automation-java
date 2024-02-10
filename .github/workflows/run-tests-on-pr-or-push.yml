@@ -21,29 +21,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout app repository
+    - name: Checkout app repository
     - uses: actions/checkout@v3
       with:
           repository: avighub/cypress-realworld-app
           ref: develop
-    - name: install node 
+          
+    - name: Set up Node.js 
     - uses: actions/setup-node@v4
       with:
        node-version: '18'
-    - name: cd to the app directory
-    - run: cd cypress-realworld-app
-    - name: install yarn
+
+    - name: Install Yarn
     - run: npm install yarn@latest -g
-    - name: install npm dependencies
-    - run: yarn
+
+    - name: Install npm dependencies
+    - run: |
+        cd cypress-realworld-app
+        yarn
+    
     - name: start app
     - run: yarn dev
+    
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+        
     - name: Build with Maven
       run: mvn clean test -Dexcludegroups="Flaky | Failing"
 
