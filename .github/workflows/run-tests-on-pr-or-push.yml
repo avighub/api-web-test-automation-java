@@ -41,6 +41,9 @@ jobs:
         #        run: nohup yarn dev >/dev/null 2>&1 &
         run: yarn dev
 
+      - name: Test api
+        run: curl --location 'http://localhost:3001/users'
+
       - name: Move to previous dir
         run: cd ..
 
