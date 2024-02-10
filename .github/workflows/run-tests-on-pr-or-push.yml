@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Run Tests on PR or PUSH
+name: Deploy App and Run Tests
 
 on:
   workflow_dispatch:
@@ -21,7 +21,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: checkout app repository
     - uses: actions/checkout@v3
+      with:
+          repository: avighub/cypress-realworld-app
+          ref: develop
+    - name: install node 
+    - uses: actions/setup-node@v4
+      with:
+       node-version: '18'
+    - name: cd to the app directory
+    - run: cd cypress-realworld-app
+    - name: install yarn
+    - run: npm install yarn@latest -g
+    - name: install npm dependencies
+    - run: yarn
+    - name: start app
+    - run: yarn dev
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
