@@ -37,7 +37,7 @@ jobs:
         run: yarn
 
       - name: start app
-        run: nohup yarn dev &
+        run: nohup yarn start &
 
       - name: Wait for app to start
         run: sleep 30
