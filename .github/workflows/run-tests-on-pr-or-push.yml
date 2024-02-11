@@ -42,6 +42,11 @@ jobs:
       - name: Wait for app to start
         run: sleep 30
 
+      - name: Test API
+        uses: sozo-design/curl@v1.0.2
+        with:
+          args: http://localhost:3001/users
+
       - name: Move to previous dir
         run: cd ..
 
@@ -61,7 +66,9 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn clean test -Dexcludegroups="Flaky | Failing"
+        run: mvn clean test
+          -Dgroups="unittest"
+          -DTRIGGERED_BY="${{ github.event_name }}"
       
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
