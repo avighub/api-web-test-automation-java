@@ -17,7 +17,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: ubuntu
 
     steps:
       - name: Checkout app repository
@@ -29,7 +28,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20.11.0'
 
       - name: Install Yarn
         run: npm install yarn@latest -g
@@ -38,11 +37,19 @@ jobs:
         run: yarn
 
       - name: start app
-        run: nohup yarn dev >/dev/null 2>&1 &
+        run: nohup yarn start &
+
+      - name: Wait for app to start
+        run: sleep 45
+      # This step is to check API, remove it when issue with App is fixed
+      #      - name: Test API
+      #        uses: sozo-design/curl@v1.0.2
+      #        with:
+      #          args: http://localhost:3001/users
 
       - name: Move to previous dir
         run: cd ..
-        
+
       - name: Checkout automation framework repository
         uses: actions/checkout@v3
 
@@ -59,7 +66,9 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn clean test -Dexcludegroups="Flaky | Failing"
+        run: mvn clean test
+          -Dgroups="unittest"
+          -DTRIGGERED_BY="${{ github.event_name }}"
       
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph

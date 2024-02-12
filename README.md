@@ -77,21 +77,41 @@
     - Now you should be able to see configurations file (properties files) contents
 4. Run Unit Tests to ensure a sanity check passes: ``` mvn clean test -Dgroups={"UnitTest"}```
 
-#### Best practices to write Tests
+#### Best practices
 
+- Follow meaningful naming standards across the framework
 - Follow naming convention for test
     - Should {do something} if {given a state or performed an action}
-- Use TODO with comment if you have anything pending to do in a later stage
 - Make sure to add annotation to each test or test class based on their category
     - Example:
         - Login feature tests , we can mark class with @LoginTest
         - If it is specific to a test we can mark annotation to individual test too
     - To run via commandline <b>  ``` mvn clean test -Dgroups=login```
       or ``` mvn clean test -Dgroups={"login","inventory"}```
+- Follow commit message format
+    - Ask below questions while thinking of meaningful commit message
+        - Why have I made these changes?
+        - What effect have my changes made?
+        - Why was the change needed?
+        - What are the changes in reference to?
+    - Use below prefix for each commit type to follow a standard
+        - feat – a new feature is introduced with the changes
+        - fix – a bug fix has occurred
+        - chore – changes that do not relate to a fix or feature and don't modify src or test files (for example
+          updating dependencies)
+        - refactor – refactored code that neither fixes a bug nor adds a feature
+        - docs – updates to documentation such as a the README or other markdown files
+        - style – changes that do not affect the meaning of the code, likely related to code formatting such as
+          white-space, missing semi-colons, and so on.
+        - test – including new or correcting previous tests
+        - perf – performance improvements
+        - ci – continuous integration related
+        - build – changes that affect the build system or external dependencies
+        - revert – reverts a previous commit
 
 #### References
 
-- To Be Updated
+- Commit message [best practices](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
 
 #### Credits
 
