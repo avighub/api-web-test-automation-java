@@ -1,6 +1,5 @@
 package com.techiewolf.annotations;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +10,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Tag("failing")
+@Tag("sanity")
 @Test
-@Disabled
-public @interface Failing {
+public @interface SanityTest {
 }

@@ -1,7 +1,7 @@
 package com.techiewolf.tests.api.user;
 
-import com.techiewolf.annotations.Sanity;
-import com.techiewolf.annotations.SignUp;
+import com.techiewolf.annotations.SanityTest;
+import com.techiewolf.annotations.SignUpFeature;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
@@ -17,8 +17,8 @@ final class CreateUserTest {
   }
 
   @Test
-  @SignUp
-  @Sanity
+  @SignUpFeature
+  @SanityTest
   void testNewUserCanBeCreated() {
     // Arrange
     UserCreation user = UserCreation.getInstance();

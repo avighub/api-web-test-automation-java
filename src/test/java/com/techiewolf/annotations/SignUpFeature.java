@@ -12,5 +12,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Tag("signup")
 @Test
-public @interface SignUp {
+public @interface SignUpFeature {
 }

@@ -1,8 +1,9 @@
 package com.techiewolf.tests.api.auth;
 
-import com.techiewolf.annotations.Login;
-import com.techiewolf.annotations.Sanity;
+import com.techiewolf.annotations.LoginFeature;
+import com.techiewolf.annotations.SanityTest;
 import com.techiewolf.annotations.SkipBeforeEach;
+import com.techiewolf.api.auth.Login;
 import com.techiewolf.api.auth.LoginApi;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
@@ -43,8 +44,8 @@ final class LoginTest {
   }
 
   @Test
-  @Login
-  @Sanity
+  @LoginFeature
+  @SanityTest
   void testLoginUsingValidCredentialsShouldReturnUserInfo() {
     // Arrange
     String loginValidUserSchemaPath = "schemas/login-valid-user-schema.json";
@@ -64,8 +65,8 @@ final class LoginTest {
 
   @Test
   @SkipBeforeEach
-  @Login
-  @Sanity
+  @LoginFeature
+  @SanityTest
   void testLoginUsingInValidCredentialsShouldReturn401() {
 
     // Act
@@ -80,11 +81,11 @@ final class LoginTest {
 
   @Test
   @SkipBeforeEach
-  @Login
-  @Sanity
+  @LoginFeature
+  @SanityTest
   void testRequestWithMissingUsernameShouldReturn400() {
     // Arrange
-    com.techiewolf.api.auth.Login login = com.techiewolf.api.auth.Login.builder()
+    Login login = com.techiewolf.api.auth.Login.builder()
             .setType("Login")
             .setPassword("dummyPassword")
             .build();
