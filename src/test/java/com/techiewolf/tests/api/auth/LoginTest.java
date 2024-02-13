@@ -1,5 +1,8 @@
 package com.techiewolf.tests.api.auth;
 
+import com.techiewolf.annotations.LoginFeature;
+import com.techiewolf.annotations.SanityTest;
+import com.techiewolf.annotations.SkipBeforeEach;
 import com.techiewolf.api.auth.Login;
 import com.techiewolf.api.auth.LoginApi;
 import com.techiewolf.api.user.UserApi;
@@ -7,10 +10,12 @@ import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
 import com.techiewolf.tests.api.user.VerifyCreateUserResponse;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 
 import java.util.Set;
-
 
 final class LoginTest {
 
@@ -39,6 +44,8 @@ final class LoginTest {
   }
 
   @Test
+  @LoginFeature
+  @SanityTest
   void testLoginUsingValidCredentialsShouldReturnUserInfo() {
     // Arrange
     String loginValidUserSchemaPath = "schemas/login-valid-user-schema.json";
@@ -57,7 +64,9 @@ final class LoginTest {
   }
 
   @Test
-  @Tag("skipBeforeEach")
+  @SkipBeforeEach
+  @LoginFeature
+  @SanityTest
   void testLoginUsingInValidCredentialsShouldReturn401() {
 
     // Act
@@ -71,10 +80,12 @@ final class LoginTest {
   }
 
   @Test
-  @Tag("skipBeforeEach")
+  @SkipBeforeEach
+  @LoginFeature
+  @SanityTest
   void testRequestWithMissingUsernameShouldReturn400() {
     // Arrange
-    Login login = Login.builder()
+    Login login = com.techiewolf.api.auth.Login.builder()
             .setType("Login")
             .setPassword("dummyPassword")
             .build();

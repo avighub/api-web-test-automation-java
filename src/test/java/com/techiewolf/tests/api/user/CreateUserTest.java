@@ -1,12 +1,13 @@
 package com.techiewolf.tests.api.user;
 
+import com.techiewolf.annotations.SanityTest;
+import com.techiewolf.annotations.SignUpFeature;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
-
 
 final class CreateUserTest {
 
@@ -16,6 +17,8 @@ final class CreateUserTest {
   }
 
   @Test
+  @SignUpFeature
+  @SanityTest
   void testNewUserCanBeCreated() {
     // Arrange
     UserCreation user = UserCreation.getInstance();

@@ -1,21 +1,24 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+# This workflow can be run manually by providing inputs
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Deploy App and Run Tests
+name: Deploy App and Run Tests on PR
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [ "main" ]
+    inputs:
+      tags:
+        description: 'Provide tags separated by comma. Possible values : unit,sanity,login,signup'
+        required: true
+        default: 'unit'
+      environment:
+        description: 'local or development'
+        required: false
+        default: 'local'
+        options:
+          - 'local'
+          - 'development'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -66,8 +69,11 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn clean test
-          -Dgroups="unit"
+        run: >-
+          mvn clean test
+          -DexcludedGroups = "failing | flaky"
+          -Dgroups= ${{ inputs.tags }}
+          -Denvironment=${{ inputs.environment }}
           -DTRIGGERED_BY="${{ github.event_name }}"
       
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
