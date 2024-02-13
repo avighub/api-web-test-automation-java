@@ -71,7 +71,7 @@ jobs:
       - name: Build with Maven
         run: >-
           mvn clean test
-          -DexcludedGroups="failing,flaky"
+          -DexcludedGroups="failing | flaky"
           -Dgroups=${{inputs.tags}}
           -Denvironment=${{inputs.environment}}
           -DTRIGGERED_BY="${{github.event_name}}"
