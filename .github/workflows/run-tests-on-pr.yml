@@ -9,6 +9,7 @@ jobs:
   trigger-tests-manually:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
+      test-environment: ''
       tests-to-execute: 'unit'
       tests-to-exclude: 'failing,flaky'
     secrets: inherit
