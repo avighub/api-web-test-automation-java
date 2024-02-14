@@ -5,78 +5,28 @@ name: deploy-app-and-run-tests-manually
 on:
   workflow_dispatch:
     inputs:
-      tags:
+      tests-to-execute:
         description: 'Provide tags separated by comma. Possible values : unit,sanity,login,signup'
         required: true
         default: 'unit'
-      environment:
+      tests-to-exclude:
+        description: 'Provide tags separated by comma. Possible values : flaky,failing'
+        required: false
+        default: ''
+      test-environment:
         description: 'local or development'
         required: false
-        default: 'local'
+        default: ''
+        type: choice
         options:
           - 'local'
           - 'development'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout app repository
-        uses: actions/checkout@v3
-        with:
-          repository: avighub/cypress-realworld-app
-          ref: develop
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.11.0'
-
-      - name: Install Yarn
-        run: npm install yarn@latest -g
-
-      - name: Install npm dependencies
-        run: yarn
-
-      - name: start app
-        run: nohup yarn start &
-
-      - name: Wait for app to start
-        run: sleep 45
-      # This step is to check API, remove it when issue with App is fixed
-      #      - name: Test API
-      #        uses: sozo-design/curl@v1.0.2
-      #        with:
-      #          args: http://localhost:3001/users
-
-      - name: Move to previous dir
-        run: cd ..
-
-      - name: Checkout automation framework repository
-        uses: actions/checkout@v3
-
-      - name: Unlock secrets
-        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
-        env:
-          GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-
-      - name: Build with Maven
-        run: >-
-          mvn clean test
-          -DexcludedGroups="failing,flaky"
-          -Dgroups=${{inputs.tags}}
-          -Denvironment=${{inputs.environment}}
-          -DTRIGGERED_BY="${{github.event_name}}"
-      
-      # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-      - name: Update dependency graph
-        uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
-
+  trigger-tests-manually:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      tests-to-execute: ${{ github.event.inputs.tests-to-execute }}
+      tests-to-exclude: ${{ github.event.inputs.tests-to-exclude }}
+      test-environment: ${{ github.event.inputs.test-environment }}
+    secrets: inherit
