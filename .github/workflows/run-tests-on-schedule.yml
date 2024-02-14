@@ -1,0 +1,17 @@
+# CRON timezone is UTC
+# This Scheduled workflow is intended to run tests regularly to keep the repository and tests up to date.
+# Use https://crontab.guru/ to generate schedule
+name: deploy-app-and-run-tests-on-schedule
+
+on:
+  schedule:
+    - cron: '0 0 * * MON' # Every monday at 00:00 UTC or 05:30 IST
+
+jobs:
+  trigger-tests-manually:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      test-environment: ''
+      tests-to-execute: 'unit'
+      tests-to-exclude: 'failing,flaky'
+    secrets: inherit
