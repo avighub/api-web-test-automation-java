@@ -36,3 +36,7 @@ build/
 
 ### pre-commit ###
 .cache/
+
+### Report ###
+allure-report/
+allure-results/
