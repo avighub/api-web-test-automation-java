@@ -1,1 +1,0 @@
-src/main/resources/environment-config/** filter=git-crypt diff=git-crypt
