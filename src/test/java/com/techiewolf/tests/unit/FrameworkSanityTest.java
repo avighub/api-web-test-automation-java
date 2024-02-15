@@ -14,7 +14,6 @@ class FrameworkSanityTest {
 
   private final EnvironmentConfig environmentConfig = ConfigurationFactory.getEnvironmentConfig();
 
-
   @Test
   @UnitTest
   void testFrameworkConfig() {
