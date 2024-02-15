@@ -21,19 +21,17 @@ public final class VerifyCreateUserResponse {
   }
 
   public VerifyCreateUserResponse hasUUID() {
-    softAssertions.assertThat(
-                    response.getBody().jsonPath().getString("user.uuid"))
-            .describedAs("UUID")
-            // regex for v4 UUID
-            .matches("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$");
+    softAssertions
+        .assertThat(response.getBody().jsonPath().getString("user.uuid"))
+        .describedAs("UUID")
+        // regex for v4 UUID
+        .matches(
+            "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$");
 
     return this;
   }
 
-
   public void assertAll() {
     softAssertions.assertAll();
   }
-
-
 }
