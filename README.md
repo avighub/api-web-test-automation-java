@@ -75,7 +75,11 @@
     - Install git-crypt in your system , follow the doc [here](https://github.com/AGWA/git-crypt/blob/master/INSTALL.md)
     - Once done, `run git-crypt unlock git-crypt-secret-public`
     - Now you should be able to see configurations file (properties files) contents
-4. Run Unit Tests to ensure a sanity check passes: ``` mvn clean test -Dgroups={"UnitTest"}```
+4. Install and setup pre-commit hook locally
+    - Install [pre-commit](https://pre-commit.com/#install) package manager
+    - Install the git hook scripts in project: ```pre-commit install```
+    - That is it, next time you make any commit from local or CI, it will prevent pushing bad formatted code
+5. Run Unit Tests to ensure a sanity check passes: ``` mvn clean test -Dgroups={"UnitTest"}```
 
 ### How to write test?
 
