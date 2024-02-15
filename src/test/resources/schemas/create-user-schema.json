@@ -1,44 +1,42 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
   "properties": {
     "user": {
-      "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "uuid": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "phoneNumber": {
+        "avatar": {
           "type": "string"
         },
         "balance": {
           "type": "string"
         },
-        "avatar": {
-          "type": "string"
-        },
         "createdAt": {
           "type": "string"
         },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
         "modifiedAt": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "uuid": {
           "type": "string"
         }
       },
@@ -55,10 +53,12 @@
         "avatar",
         "createdAt",
         "modifiedAt"
-      ]
+      ],
+      "type": "object"
     }
   },
   "required": [
     "user"
-  ]
+  ],
+  "type": "object"
 }
