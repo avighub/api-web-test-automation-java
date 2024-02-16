@@ -5,16 +5,11 @@ import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
 import com.techiewolf.config.annotations.SanityTest;
 import com.techiewolf.config.annotations.SignUpFeature;
+import com.techiewolf.setup.TestSetup;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
-final class CreateUserTest {
-
-  @AfterAll
-  static void tearDown() {
-    UserApi.resetUsers();
-  }
+final class CreateUserTest extends TestSetup {
 
   @Test
   @SignUpFeature
