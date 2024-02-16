@@ -25,44 +25,45 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout app repository
-        uses: actions/checkout@v3
-        with:
-          repository: avighub/cypress-realworld-app
-          ref: develop
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.11.0'
-
-      - name: Cache npm dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: Install Yarn
-        run: npm install yarn@latest -g
-
-      - name: Install npm dependencies
-        run: yarn
-
-      - name: start app
-        run: nohup yarn start &
-
-      - name: Wait for app to start
-        run: sleep 45
+      #### Below steps are commented as there is an issue with app deployment
+      #      - name: Checkout app repository
+      #        uses: actions/checkout@v3
+      #        with:
+      #          repository: avighub/cypress-realworld-app
+      #          ref: develop
+      #
+      #      - name: Set up Node.js
+      #        uses: actions/setup-node@v4
+      #        with:
+      #          node-version: '20.11.0'
+      #
+      #      - name: Cache npm dependencies
+      #        uses: actions/cache@v2
+      #        with:
+      #          path: ~/.npm
+      #          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+      #          restore-keys: |
+      #            ${{ runner.os }}-npm-
+      #
+      #      - name: Install Yarn
+      #        run: npm install yarn@latest -g
+      #
+      #      - name: Install npm dependencies
+      #        run: yarn
+      #
+      #      - name: start app
+      #        run: nohup yarn start &
+      #
+      #      - name: Wait for app to start
+      #        run: sleep 30
       # This step is to check API, remove it when issue with App is fixed
       #      - name: Test API
       #        uses: sozo-design/curl@v1.0.2
       #        with:
       #          args: http://localhost:3001/users
 
-      - name: Move to previous dir
-        run: cd ..
+      #      - name: Move to previous dir
+      #        run: cd ..
 
       - name: Checkout automation framework repository
         uses: actions/checkout@v3
