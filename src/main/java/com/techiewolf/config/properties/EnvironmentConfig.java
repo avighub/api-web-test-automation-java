@@ -1,19 +1,19 @@
-package com.techiewolf.config;
+package com.techiewolf.config.properties;
 
 import org.aeonbits.owner.Config;
 
 /**
- * Owner library makes it painless to manage properties file configuration
- * Refer documentation for more.
+ * Owner library makes it painless to manage properties file configuration Refer documentation for
+ * more.
  */
 @Config.Sources({
-        "file:src/main/resources/environment-config/${environment}.properties",
+  "file:src/main/resources/environment-config/${environment}.properties",
 })
 public interface EnvironmentConfig extends Config {
 
   /**
-   * Everytime there is a new key added to Environment properties file
-   * ensure to add it here. Similarly remove from here if there is a need.
+   * Everytime there is a new key added to Environment properties file ensure to add it here.
+   * Similarly remove from here if there is a need.
    */
   @Key("webLoginPageUrl")
   String webLoginPageUrl();
@@ -41,5 +41,4 @@ public interface EnvironmentConfig extends Config {
 
   @Key("resetDb")
   String resetDb();
-
 }

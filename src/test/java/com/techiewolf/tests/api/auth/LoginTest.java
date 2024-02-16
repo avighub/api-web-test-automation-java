@@ -1,13 +1,13 @@
 package com.techiewolf.tests.api.auth;
 
-import com.techiewolf.annotations.LoginFeature;
-import com.techiewolf.annotations.SanityTest;
-import com.techiewolf.annotations.SkipBeforeEach;
 import com.techiewolf.api.auth.Login;
 import com.techiewolf.api.auth.LoginApi;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
+import com.techiewolf.config.annotations.LoginFeature;
+import com.techiewolf.config.annotations.SanityTest;
+import com.techiewolf.config.annotations.SkipBeforeEach;
 import com.techiewolf.setup.TestSetup;
 import com.techiewolf.tests.api.user.VerifyCreateUserResponse;
 import io.qameta.allure.Step;
