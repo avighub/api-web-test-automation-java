@@ -8,16 +8,17 @@ import com.techiewolf.api.auth.LoginApi;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
+import com.techiewolf.setup.TestSetup;
 import com.techiewolf.tests.api.user.VerifyCreateUserResponse;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import java.util.Set;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 
-import java.util.Set;
-
-final class LoginTest {
+final class LoginTest extends TestSetup {
 
   private UserCreation userCreation;
   private String usernname;
@@ -28,13 +29,12 @@ final class LoginTest {
     UserApi.resetUsers();
   }
 
+  @Step("Test Setup")
   @BeforeEach
   void setup(final TestInfo testInfo) {
     // Adding tag to skip BeforeEach for the tests that do not need
     final Set<String> testTags = testInfo.getTags();
-    if (testTags.stream()
-            .anyMatch(tag -> tag.equals("skipBeforeEach"))
-    ) {
+    if (testTags.stream().anyMatch(tag -> tag.equals("skipBeforeEach"))) {
       return;
     }
     userCreation = UserCreation.getInstance();
@@ -55,12 +55,10 @@ final class LoginTest {
 
     // Assert
     VerifyResponse.assertThat(loginResponse)
-            .matchStatusCode(200)
-            .matchesSchema(loginValidUserSchemaPath)
-            .assertAll();
-    VerifyCreateUserResponse.assertThat(loginResponse)
-            .hasUUID()
-            .assertAll();
+        .matchStatusCode(200)
+        .matchesSchema(loginValidUserSchemaPath)
+        .assertAll();
+    VerifyCreateUserResponse.assertThat(loginResponse).hasUUID().assertAll();
   }
 
   @Test
@@ -74,9 +72,9 @@ final class LoginTest {
 
     // Assert
     VerifyResponse.assertThat(loginResponse)
-            .matchStatusCode(401)
-            .contains("Unauthorized")
-            .assertAll();
+        .matchStatusCode(401)
+        .contains("Unauthorized")
+        .assertAll();
   }
 
   @Test
@@ -85,7 +83,8 @@ final class LoginTest {
   @SanityTest
   void testRequestWithMissingUsernameShouldReturn400() {
     // Arrange
-    Login login = com.techiewolf.api.auth.Login.builder()
+    Login login =
+        com.techiewolf.api.auth.Login.builder()
             .setType("Login")
             .setPassword("dummyPassword")
             .build();
@@ -94,9 +93,8 @@ final class LoginTest {
 
     // Assert
     VerifyResponse.assertThat(loginResponse)
-            .matchStatusCode(400)
-            .contains("Bad Request")
-            .assertAll();
+        .matchStatusCode(400)
+        .contains("Bad Request")
+        .assertAll();
   }
-
 }
