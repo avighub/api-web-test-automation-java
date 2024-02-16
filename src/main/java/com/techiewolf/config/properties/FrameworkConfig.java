@@ -1,18 +1,18 @@
-package com.techiewolf.config;
+package com.techiewolf.config.properties;
 
 import org.aeonbits.owner.Config;
 
 /**
- * Owner library makes it painless to manage properties file configuration
- * Refer documentation for more.
+ * Owner library makes it painless to manage properties file configuration Refer documentation for
+ * more.
  */
 @Config.Sources({
-        "classpath:framework-config.properties",
+  "classpath:framework-config.properties",
 })
 public interface FrameworkConfig extends Config {
   /**
-   * Everytime there is a new key added to Framework properties file
-   * ensure to add it here. Similarly remove from here if there is a need.
+   * Everytime there is a new key added to Framework properties file ensure to add it here.
+   * Similarly remove from here if there is a need.
    */
   @Key("test.environment")
   @DefaultValue("local")
@@ -29,5 +29,4 @@ public interface FrameworkConfig extends Config {
   @Key("log.level")
   @DefaultValue("DEBUG")
   String logLevel();
-
 }

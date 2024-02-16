@@ -1,16 +1,16 @@
-package com.techiewolf.annotations;
-
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+package com.techiewolf.config.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Tag("unit")
+@Tag("flaky")
 @Test
-public @interface UnitTest {
-}
+@Disabled
+public @interface FlakyTest {}
