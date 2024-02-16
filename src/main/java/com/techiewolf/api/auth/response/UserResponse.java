@@ -2,9 +2,8 @@ package com.techiewolf.api.auth.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.techiewolf.api.user.PrivacyLevel;
-import lombok.Data;
-
 import java.util.UUID;
+import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
