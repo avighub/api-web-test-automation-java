@@ -1,19 +1,23 @@
 package com.techiewolf.tests.api.user;
 
+import com.techiewolf.api.testdata.TestDataApi;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
 import com.techiewolf.config.annotations.SanityTest;
 import com.techiewolf.config.annotations.SignUpFeature;
+import com.techiewolf.setup.TestSetup;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
-final class CreateUserTest {
+final class CreateUserTest extends TestSetup {
 
+  @Step("Reset Database")
   @AfterAll
   static void tearDown() {
-    UserApi.resetUsers();
+    TestDataApi.resetDatabase();
   }
 
   @Test

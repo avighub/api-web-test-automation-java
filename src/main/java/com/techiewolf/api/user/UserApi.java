@@ -32,17 +32,4 @@ public final class UserApi {
         .extract()
         .response();
   }
-
-  public static void resetUsers() {
-    log.debug("Database  is reset");
-    RestAssured.given()
-        .spec(SpecFactory.getBaseSpec())
-        .when()
-        .post(ENV_CONFIG.resetDb())
-        .then()
-        .log()
-        .ifError()
-        .extract()
-        .response();
-  }
 }

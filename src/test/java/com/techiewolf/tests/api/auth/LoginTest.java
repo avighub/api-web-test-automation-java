@@ -13,7 +13,6 @@ import com.techiewolf.tests.api.user.VerifyCreateUserResponse;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import java.util.Set;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
@@ -23,11 +22,6 @@ final class LoginTest extends TestSetup {
   private UserCreation userCreation;
   private String usernname;
   private String password;
-
-  @AfterAll
-  static void tearDown() {
-    UserApi.resetUsers();
-  }
 
   @Step("Test Setup")
   @BeforeEach

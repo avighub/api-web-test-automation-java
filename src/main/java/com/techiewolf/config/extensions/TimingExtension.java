@@ -14,6 +14,11 @@ public class TimingExtension implements BeforeTestExecutionCallback, AfterTestEx
     return testExecutionTimeThread.get();
   }
 
+  public static void resetTestExecutionTime() {
+    testExecutionTimeThread.remove();
+    log.debug("Removed test execution time from thread.");
+  }
+
   @Override
   public void beforeTestExecution(ExtensionContext context) {
     testStartTime = System.currentTimeMillis();
@@ -28,13 +33,5 @@ public class TimingExtension implements BeforeTestExecutionCallback, AfterTestEx
         context.getRequiredTestMethod().getName(),
         String.format("%.2f", testExecutionDuration));
     testExecutionTimeThread.set(testExecutionDuration);
-
-    TimingExtension.resetTestExecutionTime();
-    log.debug("Removed test execution time from thread.");
-  }
-
-  public static void resetTestExecutionTime() {
-    testExecutionTimeThread.remove();
-    log.debug("Removed test execution time from thread.");
   }
 }
