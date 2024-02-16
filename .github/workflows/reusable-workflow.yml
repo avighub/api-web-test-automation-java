@@ -116,7 +116,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
-          github_token: ${{ secrets.ALLURE_REPORT }}
+          github_token: ${{ secrets.ALLURE_REPORT }} # Create personal token and add as repository secret
           publish_branch: gh-pages
           publish_dir: allure-history
 

@@ -1,4 +1,4 @@
-package com.techiewolf.config;
+package com.techiewolf.config.properties;
 
 import org.aeonbits.owner.ConfigCache;
 import org.aeonbits.owner.ConfigFactory;

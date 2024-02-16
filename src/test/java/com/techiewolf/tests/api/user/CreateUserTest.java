@@ -1,10 +1,10 @@
 package com.techiewolf.tests.api.user;
 
-import com.techiewolf.annotations.SanityTest;
-import com.techiewolf.annotations.SignUpFeature;
 import com.techiewolf.api.user.UserApi;
 import com.techiewolf.api.user.UserCreation;
 import com.techiewolf.assertion.VerifyResponse;
+import com.techiewolf.config.annotations.SanityTest;
+import com.techiewolf.config.annotations.SignUpFeature;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -30,13 +30,10 @@ final class CreateUserTest {
     // Assert
     // TODO: Merge two assertions into one
     VerifyResponse.assertThat(createUser)
-            .matchStatusCode(201)
-            .matchesSchema(createUserSchemaPath)
-            .assertAll();
-    VerifyCreateUserResponse.assertThat(createUser)
-            .hasUUID()
-            .assertAll();
+        .matchStatusCode(201)
+        .matchesSchema(createUserSchemaPath)
+        .assertAll();
+    VerifyCreateUserResponse.assertThat(createUser).hasUUID().assertAll();
     // TODO: Add assertion for response body by deserializing response to POJO
   }
-
 }

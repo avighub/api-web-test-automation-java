@@ -1,10 +1,10 @@
 package com.techiewolf.tests.unit;
 
-import com.techiewolf.annotations.UnitTest;
 import com.techiewolf.basespec.SpecFactory;
-import com.techiewolf.config.ConfigurationFactory;
-import com.techiewolf.config.EnvironmentConfig;
-import com.techiewolf.config.FrameworkConfig;
+import com.techiewolf.config.annotations.UnitTest;
+import com.techiewolf.config.properties.ConfigurationFactory;
+import com.techiewolf.config.properties.EnvironmentConfig;
+import com.techiewolf.config.properties.FrameworkConfig;
 import com.techiewolf.utility.faker.FakerUtil;
 import io.qameta.allure.Description;
 import io.qameta.allure.Link;

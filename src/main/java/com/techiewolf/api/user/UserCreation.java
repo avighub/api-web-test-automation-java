@@ -1,13 +1,13 @@
 package com.techiewolf.api.user;
 
+import static com.techiewolf.utility.faker.FakerUtil.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.techiewolf.config.ConfigurationFactory;
-import com.techiewolf.config.EnvironmentConfig;
+import com.techiewolf.config.properties.ConfigurationFactory;
+import com.techiewolf.config.properties.EnvironmentConfig;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import static com.techiewolf.utility.faker.FakerUtil.*;
 
 @Data
 @Accessors(chain = true)
@@ -29,16 +29,16 @@ public final class UserCreation {
   public static UserCreation getInstance() {
     String password = getRandomPassword();
     return UserCreation.builder()
-            .setFirstName(getRandomFirstName())
-            .setLastName(getRandomLastName())
-            .setEmail(getRandomEmail())
-            .setPhoneNumber(getRandomPhoneNumber())
-            .setUsername(getRandomUsername())
-            .setPassword(password)
-            .setConfirmPassword(password)
-            .setAvatar(ENV_CONFIG.avatar())
-            .setBalance(100)
-            .setDefaultPrivacyLevel(PrivacyLevel.PUBLIC.toString())
-            .build();
+        .setFirstName(getRandomFirstName())
+        .setLastName(getRandomLastName())
+        .setEmail(getRandomEmail())
+        .setPhoneNumber(getRandomPhoneNumber())
+        .setUsername(getRandomUsername())
+        .setPassword(password)
+        .setConfirmPassword(password)
+        .setAvatar(ENV_CONFIG.avatar())
+        .setBalance(100)
+        .setDefaultPrivacyLevel(PrivacyLevel.PUBLIC.toString())
+        .build();
   }
 }
