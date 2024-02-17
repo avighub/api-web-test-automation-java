@@ -1,18 +1,14 @@
 package com.techiewolf.utility.faker;
 
-
-import net.datafaker.Faker;
-
 import java.util.List;
 import java.util.Random;
-
+import net.datafaker.Faker;
 
 public final class FakerUtil {
   private static final Faker FAKER = new Faker();
   private static Random random = new Random();
 
-  private FakerUtil() {
-  }
+  private FakerUtil() {}
 
   public static String getRandomFirstName() {
     return getAlphabetsOnlyString(FAKER.name().firstName());
@@ -58,5 +54,4 @@ public final class FakerUtil {
   public static String getRandomPassword() {
     return FAKER.internet().password(8, 10, true);
   }
-
 }
