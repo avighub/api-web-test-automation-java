@@ -1,7 +1,9 @@
 package com.techiewolf.api.user;
 
 public enum PrivacyLevel {
-  PUBLIC, PRIVATE, CONTACTS;
+  PUBLIC,
+  PRIVATE,
+  CONTACTS;
 
   @Override
   public String toString() {
