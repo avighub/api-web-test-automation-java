@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Feb 15 14:04:47 GMT 2024","Thu Feb 15 14:04:48 GMT 2024","548","","com.techiewolf.tests.unit.FrameworkSanityTest","","com.techiewolf.tests.unit.FrameworkSanityTest","testFakerUtil","testFakerUtil()",""
-"passed","Thu Feb 15 14:04:49 GMT 2024","Thu Feb 15 14:04:49 GMT 2024","1","","com.techiewolf.tests.unit.FrameworkSanityTest","","com.techiewolf.tests.unit.FrameworkSanityTest","testFrameworkConfig","testFrameworkConfig()","Test framework config"
-"passed","Thu Feb 15 14:04:48 GMT 2024","Thu Feb 15 14:04:49 GMT 2024","843","","com.techiewolf.tests.unit.FrameworkSanityTest","","com.techiewolf.tests.unit.FrameworkSanityTest","testSpecFactory","testSpecFactory()",""
-"passed","Thu Feb 15 14:04:47 GMT 2024","Thu Feb 15 14:04:47 GMT 2024","203","","com.techiewolf.tests.unit.FrameworkSanityTest","","com.techiewolf.tests.unit.FrameworkSanityTest","testEnvironmentConfig","testEnvironmentConfig()",""
