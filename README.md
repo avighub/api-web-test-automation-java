@@ -64,7 +64,7 @@
 ### How to setup ?
 
 1. Install Java JDK 17 or above
-2. Clone repository: `git@github.com:avighub/test-automation-java-restassured-selenide.git`
+2. Clone repository: `https://github.com/avighub/api-web-test-automation-java.git`
 3. Unlock Secret:
     - [git-crypt](https://github.com/AGWA/git-crypt) is used to manage secrets in this framework
     - It needs a secret file to unlock the encrypted files such as properties files that contains credentials and urls
